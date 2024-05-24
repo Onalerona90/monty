@@ -46,7 +46,7 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
+void div_op(stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void execute(char *line, unsigned int line_number, stack_t **stack);
 

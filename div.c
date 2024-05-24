@@ -6,7 +6,7 @@
  * @line_number: Line number of the opcode
 */
 
-void div(stack_t **stack, unsigned int line_number)
+void div_op(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *next;
 
