@@ -5,8 +5,7 @@ void execute(char *line, unsigned int line_number, stack_t **stack)
 	int j;
 	char *opcode;
 
-	line[strcspn(line, "\n")] = '\0';
-    opcode = strtok(line, " ");
+    opcode = strtok(line, " \n");
 
     if (opcode == NULL || opcode[0] == '#')
         return;
