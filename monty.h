@@ -69,7 +69,6 @@ void queue_op(stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void execute(char *line, unsigned int line_number, stack_t **stack);
 
-extern data_structure_t data_structure_mode;
 extern instruction_t instructions[];
 
 #endif

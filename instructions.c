@@ -20,5 +20,3 @@ instruction_t instructions[] = {
     {"queue", queue_op},
 	{NULL, NULL}
 };
-
-data_structure_t data_structure_mode = STACK;
