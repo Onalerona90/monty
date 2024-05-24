@@ -8,12 +8,24 @@
 
 void stack_op(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	(void)stack;
 	(void)line_number;
 
 	if (data_structure_mode == QUEUE)
 	{
+		temp = NULL;
+
+		while (*stack != NULL && (*stack)->prev != NULL)
+		{
+			temp = (*stack)->prev;
+			temp->next = NULL;
+			(*stack)->prev = NULL;
+			temp->prev = *stack;
+			(*stack)->next = temp;
+			*stack = temp;
+		}
 		data_structure_mode = STACK;
-		return;
 	}
 }
