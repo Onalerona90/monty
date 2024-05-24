@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     while (fgets(line, sizeof(line), file))
     {
         line_number++;
-        execute_line(line, line_number, &stack);
+        execute(line, line_number, &stack);
     }
 
     fclose(file);

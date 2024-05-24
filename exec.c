@@ -2,9 +2,9 @@
 
 void execute(char *line, unsigned int line_number, stack_t **stack)
 {
-    char *opcode;
-    opcode = strtok(line, " \n");
 	int j;
+	char *opcode;
+    opcode = strtok(line, " \n");
 
     if (opcode == NULL || opcode[0] == '#')
         return;
