@@ -9,6 +9,17 @@
 #define MAX_LINE_LENGTH 100
 
 /**
+ * enum data_structure_e - Enum to represent data structure mode
+ * @STACK: Stack mode (LIFO)
+ * @QUEUE: Queue mode (FIFO)
+ */
+typedef enum data_structure_e
+{
+    STACK,
+    QUEUE
+} data_structure_t;
+
+/**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
@@ -53,9 +64,12 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack_op(stack_t **stack, unsigned int line_number);
+void queue_op(stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void execute(char *line, unsigned int line_number, stack_t **stack);
 
+data_structure_t data_structure_mode = STACK;
 extern instruction_t instructions[];
 
 #endif
