@@ -10,6 +10,8 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *first, *last;
 
+	(void)line_number;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
