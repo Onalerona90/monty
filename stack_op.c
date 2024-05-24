@@ -6,11 +6,14 @@
  * @line_number: Line number of the opcode
 */
 
-data_structure_t data_structure_mode = STACK;
-
 void stack_op(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
-	data_structure_mode = STACK;
+
+	if (data_structure_mode == QUEUE)
+	{
+		data_structure_mode = STACK;
+		return;
+	}
 }
