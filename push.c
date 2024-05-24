@@ -1,28 +1,40 @@
 #include "monty.h"
 
 /**
- * 
+ * push - Pushes an element to the stack
+ * @stack: Double pointer to the head of the stack
+ * @line_number: Line number of the opcode
 */
 
-void push(stack_t **stack, unsigned int line_number, char *arg)
+void push(stack_t **stack, unsigned int line_number)
 {
-	if (arg == NULL || (!isdigit(*arg) && *arg != '-' && !isdigit(arg[1])))
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+    char *argument;
+    int num;
 
-	stack_t *new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	new_node->n = atoi(arg);
-	new_node->next = *stack;
-	new_node->prev = NULL;
+    argument = strtok(NULL, " \n");
 
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
-	*stack = new_node;
+    if (argument == NULL)
+    {
+        fprintf(stderr, "L%u: usage: push integer\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    num = atoi(argument);
+
+    stack_t *new_node = malloc(sizeof(stack_t));
+    if (new_node == NULL)
+    {
+        fprintf(stderr, "Error: malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    new_node->n = num;
+    new_node->prev = NULL;
+
+    if (*stack != NULL)
+    {
+        new_node->next = *stack;
+        (*stack)->prev = new_node;
+    }
+    *stack = new_node;
 }

@@ -1,25 +1,29 @@
 #include "monty.h"
 
 /**
- * 
+ * main - Entry point
 */
 
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
-	{
-		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
-		exit(EXIT_FAILURE);
-	}
+	stack_t *stack = NULL;
+	unsigned int i;
+    char *opcode;
 
-	FILE *file = fopen(argv[1], "r");
-	if (file == NULL)
-	{
-		perror("Error");
-		exit(EXIT_FAILURE);
-	}
+	for (i = 0; opcodes[i] != NULL; i++)
+    {
+        opcode = strtok(opcodes[i], " \n");
 
-	execute(file);
-	fclose(file);
+        int j = 0;
+        while (instructions[j].opcode != NULL)
+        {
+            if (strcmp(opcode, instructions[j].opcode) == 0)
+            {
+                instructions[j].f(&stack, i + 1);
+                break;
+            }
+            j++;
+        }
+    }
 	return 0;
 }
