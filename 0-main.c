@@ -1,37 +1,43 @@
 #include "monty.h"
 
 /**
- * main - Entry point
+ * main - Entry Point
 */
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	stack_t *stack = NULL;
-	unsigned int i;
-    int j = 0;
-    char *opcode;
+    stack_t *stack = NULL;
+    FILE *file;
+    char line[MAX_LINE_LENGTH];
+    unsigned int line_number = 0;
 
-	for (i = 0; opcodes[i] != NULL; i++)
+    if (argc != 2)
     {
-        opcode = strtok(opcodes[i], " \n");
-
-        while (instructions[j].opcode != NULL)
-        {
-            if (strcmp(opcode, instructions[j].opcode) == 0)
-            {
-                instructions[j].f(&stack, i + 1);
-                break;
-            }
-            j++;
-        }
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
     }
 
-	while (stack != NULL)
+    file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+
+    while (fgets(line, sizeof(line), file))
+    {
+        line_number++;
+        execute_line(line, line_number, &stack);
+    }
+
+    fclose(file);
+
+    while (stack != NULL)
     {
         stack_t *temp = stack;
         stack = stack->next;
         free(temp);
     }
 
-	return 0;
+    return 0;
 }
