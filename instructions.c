@@ -8,5 +8,6 @@ instruction_t instructions[] = {
 	{"swap", swap},
 	{"add", add},
 	{"nop", nop},
+	{"sub", sub},
 	{NULL, NULL}
 };
