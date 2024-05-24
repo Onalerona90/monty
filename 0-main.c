@@ -4,17 +4,17 @@
  * main - Entry point
 */
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	stack_t *stack = NULL;
 	unsigned int i;
+    int j = 0;
     char *opcode;
 
 	for (i = 0; opcodes[i] != NULL; i++)
     {
         opcode = strtok(opcodes[i], " \n");
 
-        int j = 0;
         while (instructions[j].opcode != NULL)
         {
             if (strcmp(opcode, instructions[j].opcode) == 0)
@@ -25,5 +25,13 @@ int main(int argc, char *argv[])
             j++;
         }
     }
+
+	while (stack != NULL)
+    {
+        stack_t *temp = stack;
+        stack = stack->next;
+        free(temp);
+    }
+
 	return 0;
 }
