@@ -12,5 +12,6 @@ instruction_t instructions[] = {
 	{"div", div_op},
 	{"mul", mul},
 	{"mod", mod},
+	{"pchar", pchar},
 	{NULL, NULL}
 };
