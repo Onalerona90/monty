@@ -1,5 +1,7 @@
 #include "monty.h"
 
+data_structure_t data_structure_mode = STACK;
+
 instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
