@@ -41,7 +41,9 @@ void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 void execute(FILE *file);
 
-extern instruction_t instructions[] = {
+extern instruction_t instructions[];
+
+instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
 	{NULL, NULL}
